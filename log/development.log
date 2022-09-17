@@ -24,3 +24,233 @@ Migrating to DeviseCreateUsers (20220917204358)
   [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2935717777971003795)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/admin/teachers?q%5Bfirst_name_or_cpf_or_email_cont%5D=&commit=" for ::1 at 2022-09-17 18:14:31 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/admin/teachers"):
+  
+Started GET "/" for ::1 at 2022-09-17 18:14:36 -0300
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.0ms | Allocations: 104)
+  Rendered shared/_navbar.html.erb (Duration: 4.6ms | Allocations: 690)
+  Rendered shared/_flashes.html.erb (Duration: 0.9ms | Allocations: 221)
+  Rendered layout layouts/application.html.erb (Duration: 6760.3ms | Allocations: 192435)
+Completed 200 OK in 6795ms (Views: 6764.7ms | ActiveRecord: 0.0ms | Allocations: 196085)
+
+
+Started GET "/users/sign_in" for ::1 at 2022-09-17 18:14:49 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 7.4ms | Allocations: 829)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 220.7ms | Allocations: 30099)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 153)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 245.7ms | Allocations: 39069)
+Completed 200 OK in 291ms (Views: 251.9ms | ActiveRecord: 8.9ms | Allocations: 57580)
+
+
+Started GET "/" for ::1 at 2022-09-17 18:15:12 -0300
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 189)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 60.8ms | Allocations: 9214)
+Completed 200 OK in 62ms (Views: 61.4ms | ActiveRecord: 0.0ms | Allocations: 9463)
+
+
+Started GET "/rails/mailers/user_mailer/welcome" for ::1 at 2022-09-17 18:15:28 -0300
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  [1m[36mUser Load (46.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/user_mailer_preview.rb:6:in `welcome'
+UserMailer#welcome: processed outbound mail in 2.8ms
+Completed 500 Internal Server Error in 227ms (ActiveRecord: 46.7ms | Allocations: 33595)
+
+
+  
+NoMethodError (undefined method `email' for nil:NilClass):
+  
+app/mailers/user_mailer.rb:11:in `welcome'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (18.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "teste@teste.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (44.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "teste@teste.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-09-17 21:17:17.203980"], ["updated_at", "2022-09-17 21:17:17.203980"]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/rails/mailers/user_mailer/welcome" for ::1 at 2022-09-17 18:17:23 -0300
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/user_mailer_preview.rb:6:in `welcome'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (Duration: 1.7ms | Allocations: 129)
+  Rendered layout layouts/mailer.html.erb (Duration: 5.3ms | Allocations: 341)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/welcome.text.erb within layouts/mailer
+  Rendered user_mailer/welcome.text.erb within layouts/mailer (Duration: 2.1ms | Allocations: 125)
+  Rendered layout layouts/mailer.text.erb (Duration: 3.7ms | Allocations: 305)
+UserMailer#welcome: processed outbound mail in 56.6ms
+  Rendering /Users/marcelodev/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /Users/marcelodev/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4/lib/rails/templates/rails/mailers/email.html.erb (Duration: 14.2ms | Allocations: 8587)
+Completed 200 OK in 83ms (Views: 16.5ms | ActiveRecord: 0.4ms | Allocations: 24495)
+
+
+Started GET "/rails/mailers/user_mailer/welcome?part=text%2Fhtml" for ::1 at 2022-09-17 18:17:23 -0300
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/welcome"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/user_mailer_preview.rb:6:in `welcome'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.3ms | Allocations: 83)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/welcome.text.erb within layouts/mailer
+  Rendered user_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.4ms | Allocations: 82)
+UserMailer#welcome: processed outbound mail in 15.7ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 4)
+Completed 200 OK in 50ms (Views: 4.6ms | ActiveRecord: 1.6ms | Allocations: 11733)
+
+
+Started GET "/rails/mailers/user_mailer/welcome" for ::1 at 2022-09-17 18:19:15 -0300
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/user_mailer_preview.rb:6:in `welcome'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (Duration: 3.5ms | Allocations: 131)
+  Rendered layout layouts/mailer.html.erb (Duration: 6.3ms | Allocations: 343)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/welcome.text.erb within layouts/mailer
+  Rendered user_mailer/welcome.text.erb within layouts/mailer (Duration: 1.6ms | Allocations: 121)
+  Rendered layout layouts/mailer.text.erb (Duration: 4.6ms | Allocations: 303)
+UserMailer#welcome: processed outbound mail in 33.3ms
+  Rendering /Users/marcelodev/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /Users/marcelodev/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4/lib/rails/templates/rails/mailers/email.html.erb (Duration: 16.1ms | Allocations: 8321)
+Completed 200 OK in 85ms (Views: 19.4ms | ActiveRecord: 0.5ms | Allocations: 21650)
+
+
+Started GET "/rails/mailers/user_mailer/welcome?part=text%2Fhtml" for ::1 at 2022-09-17 18:19:15 -0300
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/welcome"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/user_mailer_preview.rb:6:in `welcome'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (Duration: 0.7ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.6ms | Allocations: 83)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/welcome.text.erb within layouts/mailer
+  Rendered user_mailer/welcome.text.erb within layouts/mailer (Duration: 0.8ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 2.1ms | Allocations: 82)
+UserMailer#welcome: processed outbound mail in 15.3ms
+  Rendering text template
+  Rendered text template (Duration: 0.1ms | Allocations: 4)
+Completed 200 OK in 35ms (Views: 5.4ms | ActiveRecord: 0.4ms | Allocations: 11538)
+
+
+Started GET "/rails/mailers/user_mailer/welcome?part=text%2Fplain" for ::1 at 2022-09-17 18:19:41 -0300
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/plain", "path"=>"user_mailer/welcome"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/user_mailer_preview.rb:6:in `welcome'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.3ms | Allocations: 83)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/welcome.text.erb within layouts/mailer
+  Rendered user_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.2ms | Allocations: 82)
+UserMailer#welcome: processed outbound mail in 8.3ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 4)
+Completed 200 OK in 19ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 11538)
+
+
+Started GET "/rails/mailers/user_mailer/welcome.txt?part=text%2Fhtml" for ::1 at 2022-09-17 18:19:45 -0300
+Processing by Rails::MailersController#preview as TEXT
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/welcome"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/user_mailer_preview.rb:6:in `welcome'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.3ms | Allocations: 83)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/welcome.text.erb within layouts/mailer
+  Rendered user_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.2ms | Allocations: 82)
+UserMailer#welcome: processed outbound mail in 5.4ms
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 4)
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 11541)
+
+
+Started GET "/rails/mailers/user_mailer/welcome.html" for ::1 at 2022-09-17 18:23:35 -0300
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/user_mailer_preview.rb:6:in `welcome'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (Duration: 23.7ms | Allocations: 4012)
+  Rendered layout layouts/mailer.html.erb (Duration: 24.4ms | Allocations: 4079)
+UserMailer#welcome: processed outbound mail in 31.7ms
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.4ms | Allocations: 7080)
+
+
+  
+ActionView::Template::Error (undefined method `confirm_user_url' for #<ActionView::Base:0x0000000000dc78>):
+    5: 
+    6: <p> Você acabou de se cadastrar no nosso site. </p>
+    7: 
+    8: <%= link_to 'Confirme seu cadastro', confirm_user_url(@user) %>
+  
+app/views/user_mailer/welcome.html.erb:8
+app/mailers/user_mailer.rb:11:in `welcome'
+Started GET "/rails/mailers/user_mailer/welcome.html" for ::1 at 2022-09-17 18:24:08 -0300
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/user_mailer_preview.rb:6:in `welcome'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (Duration: 5.0ms | Allocations: 215)
+  Rendered layout layouts/mailer.html.erb (Duration: 7.2ms | Allocations: 428)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/welcome.text.erb within layouts/mailer
+  Rendered user_mailer/welcome.text.erb within layouts/mailer (Duration: 3.1ms | Allocations: 121)
+  Rendered layout layouts/mailer.text.erb (Duration: 7.1ms | Allocations: 303)
+UserMailer#welcome: processed outbound mail in 37.7ms
+  Rendering /Users/marcelodev/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /Users/marcelodev/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/railties-7.0.4/lib/rails/templates/rails/mailers/email.html.erb (Duration: 12.1ms | Allocations: 8321)
+Completed 200 OK in 103ms (Views: 16.9ms | ActiveRecord: 1.1ms | Allocations: 21747)
+
+
+Started GET "/rails/mailers/user_mailer/welcome.html?part=text%2Fhtml" for ::1 at 2022-09-17 18:24:09 -0300
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/welcome"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ test/mailers/previews/user_mailer_preview.rb:6:in `welcome'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (Duration: 4.4ms | Allocations: 68)
+  Rendered layout layouts/mailer.html.erb (Duration: 6.1ms | Allocations: 143)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/welcome.text.erb within layouts/mailer
+  Rendered user_mailer/welcome.text.erb within layouts/mailer (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/mailer.text.erb (Duration: 2.0ms | Allocations: 82)
+UserMailer#welcome: processed outbound mail in 39.9ms
+  Rendering text template
+  Rendered text template (Duration: 0.1ms | Allocations: 4)
+Completed 200 OK in 150ms (Views: 22.1ms | ActiveRecord: 1.2ms | Allocations: 11605)
+
+

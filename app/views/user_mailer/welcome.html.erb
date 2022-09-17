@@ -1,5 +1,8 @@
-<h1>User#welcome</h1>
+<style>
+  h1 { color: red; }
+</style>
+<h1>Bem Vindo, <%= @user.email %></h1>
 
-<p>
-  <%= @greeting %>, find me in app/views/user_mailer/welcome.html.erb
-</p>
+<p> Você acabou de se cadastrar no nosso site. </p>
+
+<%= link_to 'Go enjoy the site', root_url %>
