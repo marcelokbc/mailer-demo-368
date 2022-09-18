@@ -254,3 +254,131 @@ UserMailer#welcome: processed outbound mail in 39.9ms
 Completed 200 OK in 150ms (Views: 22.1ms | ActiveRecord: 1.2ms | Allocations: 11605)
 
 
+Started GET "/users/sign_in" for ::1 at 2022-09-17 18:44:05 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 5.9ms | Allocations: 564)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 81.3ms | Allocations: 9493)
+  Rendered shared/_navbar.html.erb (Duration: 3.5ms | Allocations: 574)
+  Rendered shared/_flashes.html.erb (Duration: 2.0ms | Allocations: 216)
+  Rendered layout layouts/application.html.erb (Duration: 156.5ms | Allocations: 19428)
+Completed 200 OK in 224ms (Views: 181.2ms | Allocations: 20823)
+
+
+Started GET "/users/sign_up" for ::1 at 2022-09-17 18:44:21 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 211)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 31.3ms | Allocations: 7738)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 153)
+  Rendered shared/_flashes.html.erb (Duration: 0.4ms | Allocations: 26)
+  Rendered layout layouts/application.html.erb (Duration: 62.4ms | Allocations: 16701)
+Completed 200 OK in 73ms (Views: 66.0ms | Allocations: 17880)
+
+
+Started POST "/users" for ::1 at 2022-09-17 18:44:29 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"marcelo@teste.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (42.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "marcelo@teste.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "marcelo@teste.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-09-17 21:44:30.485822"], ["updated_at", "2022-09-17 21:44:30.485822"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 577ms (ActiveRecord: 137.3ms | Allocations: 11395)
+
+
+Started GET "/" for ::1 at 2022-09-17 18:44:30 -0300
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.3ms | Allocations: 104)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:13
+  Rendered shared/_navbar.html.erb (Duration: 8.2ms | Allocations: 1151)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered layout layouts/application.html.erb (Duration: 36.7ms | Allocations: 10313)
+Completed 200 OK in 41ms (Views: 38.5ms | ActiveRecord: 1.1ms | Allocations: 11063)
+
+
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (Duration: 4.8ms | Allocations: 433)
+  Rendered layout layouts/mailer.html.erb (Duration: 12.2ms | Allocations: 655)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/welcome.text.erb within layouts/mailer
+  Rendered user_mailer/welcome.text.erb within layouts/mailer (Duration: 1.8ms | Allocations: 125)
+  Rendered layout layouts/mailer.text.erb (Duration: 3.6ms | Allocations: 305)
+UserMailer#welcome: processed outbound mail in 151.9ms
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (3.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "marcelo@tester.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (5.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "marcelo@tester.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-09-17 21:59:17.167414"], ["updated_at", "2022-09-17 21:59:17.167414"]]
+  [1m[36mTRANSACTION (54.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "marcelo2@tester.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (42.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "marcelo2@tester.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2022-09-17 21:59:56.514307"], ["updated_at", "2022-09-17 21:59:56.514307"]]
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (Duration: 2.7ms | Allocations: 217)
+  Rendered layout layouts/mailer.html.erb (Duration: 4.5ms | Allocations: 429)
+  Rendering layout layouts/mailer.text.erb
+  Rendering user_mailer/welcome.text.erb within layouts/mailer
+  Rendered user_mailer/welcome.text.erb within layouts/mailer (Duration: 3.2ms | Allocations: 121)
+  Rendered layout layouts/mailer.text.erb (Duration: 11.9ms | Allocations: 303)
+UserMailer#welcome: processed outbound mail in 27.4ms
+Delivered mail 6326435c98b2e_df9be9c2981c@MacBook-Pro-de-Marcelo.local.mail (54.8ms)
+Date: Sat, 17 Sep 2022 18:59:56 -0300
+From: marcelo.cansilva@gmail.com
+To: marcelo2@tester.com
+Message-ID: <6326435c98b2e_df9be9c2981c@MacBook-Pro-de-Marcelo.local.mail>
+Subject: Bem vindo ao sistema
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_6326435c96fed_df9be9c29767";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_6326435c96fed_df9be9c29767
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+User#welcome
+
+, find me in app/views/user_mailer/welcome.text.erb
+
+
+----==_mimepart_6326435c96fed_df9be9c29767
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>=0D
+<html>=0D
+  <head>=0D
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />=0D
+    <style>=0D
+      /* Email styles need to be inline */=0D
+    </style>=0D
+  </head>=0D
+=0D
+  <body>=0D
+    <style>=0D
+  h1 { color: red; }=0D
+</style>=0D
+<h1>Bem Vindo, marcelo2@tester.com</h1>=0D
+=0D
+<p> Voc=C3=AA acabou de se cadastrar no nosso site. </p>=0D
+=0D
+<a href=3D"http://localhost:3000/">Go enjoy the site</a>=0D
+=0D
+  </body>=0D
+</html>=0D
+
+----==_mimepart_6326435c96fed_df9be9c29767--
+
+  [1m[36mTRANSACTION (195.4ms)[0m  [1m[35mCOMMIT[0m
